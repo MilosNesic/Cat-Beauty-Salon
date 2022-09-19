@@ -13,8 +13,8 @@ const arrayTreatments = [
   },
   {
     id: "t2",
-    name: "Styling",
-    description: "After Bathing ofcourse Styling",
+    name: "Meow-Meow Styling",
+    description: "After Bathing of course Styling",
     price: 56.5,
   },
   {
@@ -34,6 +34,7 @@ const arrayTreatments = [
 const Treatments = () => {
   const listOfTreatments = arrayTreatments.map((treatment) => (
     <TreatmentItem
+      id={treatment.id}
       key={treatment.id}
       name={treatment.name}
       description={treatment.description}
