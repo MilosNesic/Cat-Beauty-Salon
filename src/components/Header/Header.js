@@ -5,11 +5,16 @@ import HeaderButton from "./HeaderButton";
 
 
 const Header=(props)=>{
+
+    const clickCartButtonHandler=()=>{
+        props.onChartClicked(true);
+    }
+
 return (
     <Fragment>
         <header className={classes.header}>
             <h1>Cat Cosmetics M&M</h1>
-            <HeaderButton/>
+            <HeaderButton onClick={clickCartButtonHandler}/>
         </header>
 
         <div className={classes.mainImage}>
