@@ -1,9 +1,23 @@
 import classes from "./HeaderButton.module.css";
+import {useContext, useState, useEffect} from 'react';
+import CartContext from "../../store/CartContext";
 
 const HeaderButton = (props) => {
+  const ctx=useContext(CartContext);
+  const [letsBump, setLetsBump]=useState(false);
+  const buttonClassName=`${classes.button} ${letsBump ? classes.bump : ""}`;
+  useEffect(()=>{
+    if(ctx.items.length===0){
+      return
+    }
+    setLetsBump(true);
+    setTimeout(()=>{
+      setLetsBump(false);
+    },350);
+  },[ctx.items]);
 
   return (
-    <button className={classes.button} onClick={props.onClick}>
+    <button className={buttonClassName} onClick={props.onClick}>
       <span  className={classes.icon}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +28,7 @@ const HeaderButton = (props) => {
         </svg>
       </span>
       <span>Cart</span>
-      <span className={classes.badge}>0</span>
+      <span className={classes.badge}>{ctx.items.length}</span>
     </button>
   );
 };

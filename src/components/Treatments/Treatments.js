@@ -15,7 +15,7 @@ const arrayTreatments = [
     id: "t2",
     name: "Meow-Meow Styling",
     description: "After Bathing of course Styling",
-    price: 56.5,
+    price: 56.55,
   },
   {
     id: "t3",

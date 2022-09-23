@@ -1,13 +1,13 @@
+import React from "react";
 import classes from "./Input.module.css";
 
-const Input=(props)=>{ /* props su label i objekat input koji sadrzi
-sve sto mi je potrebno od informacija, tip, ogranicenja...*/
-return(
+const Input = React.forwardRef((props,ref) => {
+  return (
     <div className={classes.input}>
-        <label htmlFor={props.input.id}>{props.label}</label>
-        <input {...props.input}></input>
+      <label htmlFor={props.input.id}>{props.label}</label>
+      <input {...props.input} ref={ref}></input>
     </div>
-);
-};
+  );
+});
 
 export default Input;

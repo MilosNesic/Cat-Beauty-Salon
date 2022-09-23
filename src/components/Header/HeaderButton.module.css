@@ -5,13 +5,7 @@
     background-color: #4d1601;
     color: white;
     padding: 0.75rem 3rem;
-    display: flex;/* bez ovog sve se razleti zato sto tek kada
-    ukljucis da roditelj bude flex kontejner, tek onda moze na span
-    koji predstavlja ikonicu da se prmene width i height i svi elementi 
-    u button se po difoltu lepo rasporede po duzini*/
-
-
-   /* justify-content: space-around;*/
+    display: flex;
     align-items: center;
     border-radius: 25px;
     font-weight: bold;
@@ -39,7 +33,7 @@
     background-color: #92320c;
   }
   
-  /*.bump {
+  .bump {
     animation: bump 300ms ease-out;
   }
   
@@ -59,4 +53,4 @@
     100% {
       transform: scale(1);
     }
-  }*/
+  }
