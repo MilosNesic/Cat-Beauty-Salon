@@ -39,6 +39,11 @@ function App() {
     return false;
   };
 
+  const clearContextHandler=()=>{
+    setCartItems([]);
+    setTotalPrice(0);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -46,6 +51,7 @@ function App() {
         totalPrice: totalPrice,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
+        clearContext: clearContextHandler
       }}
     >
       {cartIsShown && <ShoppingCart onShowCart={chartShownHandler} />}

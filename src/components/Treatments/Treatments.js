@@ -1,37 +1,42 @@
 import TreatmentsIntro from "./TreatmentsIntro";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import classes from "./Treatments.module.css";
 import Card from "../UI/Card";
 import TreatmentItem from "./Treatment/TreatmentItem";
 
-const arrayTreatments = [
-  {
-    id: "t1",
-    name: "Bathing",
-    description: "Finest animal-tested bath",
-    price: 22.99,
-  },
-  {
-    id: "t2",
-    name: "Meow-Meow Styling",
-    description: "After Bathing of course Styling",
-    price: 56.55,
-  },
-  {
-    id: "t3",
-    name: "Claw Cutting",
-    description: "We must not forget claws...",
-    price: 14.99,
-  },
-  {
-    id: "t4",
-    name: "Grooming Tail",
-    description: "Just for real lady-cats",
-    price: 18.99,
-  },
-];
-
 const Treatments = () => {
+  const [arrayTreatments, setArrayTreatments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const fetchTreatments = async () => {
+      const response = await fetch(
+        "https://cat-salon-default-rtdb.firebaseio.com/treatments.json"
+      );
+      const responseData = await response.json();
+      const loadedTreatments = [];
+      for (const key in responseData) {
+        const newTreatment = {
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        };
+        loadedTreatments.push(newTreatment);
+      }
+      setArrayTreatments(loadedTreatments);
+      setIsLoading(false);
+    };
+    fetchTreatments();
+  }, []);
+
+  if(isLoading){
+    return(
+      <section>
+        <p className={classes.loading}>LOADING...</p>
+      </section>
+    );
+  }
+
   const listOfTreatments = arrayTreatments.map((treatment) => (
     <TreatmentItem
       id={treatment.id}
